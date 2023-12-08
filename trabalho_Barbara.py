@@ -7,12 +7,12 @@ import locale
 locale.setlocale(locale.LC_ALL, 'pt_PT')
 
 def extrair_tags():
-    #Regex para as tags, em que tudo o que se encontra a seguir a "tag:" dentro de chavetas.
+    #Regex para as tags, em que tudo o que se encontra a seguir a "tag:" dentro de chavetas é um match.
     tags = re.findall(r'tag:{?([\w\d \-\“\”\.\|\!\"\'\%\&\\\n\+\(\)\/]+)}', text)   
     return tags
 
 def extrair_datas():
-    #Regex para as datas, em que tudo o que se encontra a seguir a "#DATE: (qualquer texto) —".
+    #Regex para as datas, em que tudo o que se encontra a seguir a "#DATE: (qualquer texto) —" é um match.
     datas = re.findall(r'\#DATE\: \[[\w\d]+\] [\w\d ]+ \— ?([\w\d ]+)', text)
     return datas
 
@@ -21,7 +21,7 @@ def converter_para_datetime(data):
     return datetime.strptime(data, '%d de %B de %Y')
 
 def extrair_etiquetas():
-     #Regex para as etiquetas , em que tudo o que se encontra a seguir a "Etiquetas: ".
+     #Regex para as etiquetas , em que tudo o que se encontra a seguir a "Etiquetas:" é um match.
     etiquetas = re.findall(r'Etiquetas: ?([\w\d ]+)', text)
     return etiquetas
 
